@@ -5,41 +5,79 @@ import matplotlib.pyplot as plt
 def linear_search():
     exetimes = []
     array_length = []
+
     for i in range(5):
-        array_size = 10 * pow(10 , i)
+        array_size = 10 * 10**i
         array_length.append(array_size)
-        array = make_arrays(array_size)
-        target = 10 * pow(10,i)
+        array = make_array(array_size)
+        target = 10 * 10**i
+
         start_time = time.time()
+        found = False
+
         for z in array:
             if z == target:
-                return "Found"
-            time.sleep(0.000001)
+                found = True
+                break
+            time.sleep(0.0000001)
 
         end_time = time.time()
-        result = end_time - start_time  
+        result = end_time - start_time
+
         exetimes.append(result)
-    for k in exetimes:
-        print(k)
+
+        if found:
+            print("Found")
+        else:
+            print("Not found")
+
+    print_execution_times(exetimes)
     draw_graph(array_length, exetimes)
-def make_arrays(i):
-    arr = []
-    for j in range(i):
-        arr.append(j)
-    return arr
 
-def draw_graph(x,y):
-    
+def binary_search():
+    exetimes = []
+    array_length = []
 
-    # Plotting the graph
+    for i in range(5):
+        array_size = 10 * 10**i
+        array_length.append(array_size)
+        array = make_array(array_size)
+        target = 10 * 10**i
+
+        start_time = time.time()
+        found = False
+
+        for z in array:
+            if z == target:
+                found = True
+                break
+            time.sleep(0.0000001)
+
+        end_time = time.time()
+        result = end_time - start_time
+
+        exetimes.append(result)
+
+        if found:
+            print("Found")
+        else:
+            print("Not found")
+
+    print_execution_times(exetimes)
+    draw_graph(array_length, exetimes)
+
+def make_array(size):
+    return list(range(size))
+
+def print_execution_times(times):
+    for time_val in times:
+        print(time_val)
+
+def draw_graph(x, y):
     plt.plot(x, y, marker='o', linestyle='-')
-
-    # Adding labels and title
     plt.xlabel('Array Size')
     plt.ylabel('Execution Time (seconds)')
     plt.title('Execution Time vs. Array Size')
-
-    # Display the graph
     plt.show()
 
 linear_search()
