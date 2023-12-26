@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import Button, messagebox
 import threading
 import random
+import matplotlib.pyplot as plt
 
 # A function to make arrays in given sizes
 def make_array(size):
@@ -54,8 +55,7 @@ def linear_search():
 
         if found:
             print("Found")
-        else:
-            print("Not found")
+        
 
     print_execution_times(exetimes)
     draw_graph(array_length, exetimes, 'Linear Search Execution Time vs. Array Size')
@@ -176,6 +176,7 @@ def hanoi():
         print(result)
     print_execution_times(exetimes)
     draw_graph(array_length, exetimes, 'Tower of Hanoi Execution Time vs. Number of Discs')
+
 
 
 # a class to make gui for the project using tkinter library
